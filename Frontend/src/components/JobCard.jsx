@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const JobCard = ({ job }) => {
   return (
-    <div className='border p-6 shadow rounded'>
+    <div className='border-0 p-6 shadow rounded'>
         <div className='flex justify-between items-center'>
             <img className='h-8' src={assets.company_icon} alt="" />
         </div>
@@ -13,9 +13,9 @@ const JobCard = ({ job }) => {
             <span className='bg-red-50 border-red-200 px-4 py-1.5 rounded'>{job.level}</span>
         </div>
         <p className='text-gray-500 text-sm mt-4' dangerouslySetInnerHTML={{__html:job.description.slice(0,150)}}></p>
-        <div>
-            <button>Apply now</button>
-            <button>Learn more</button>
+        <div className='mt-4 flex gap-4 text-sm'>
+            <button className='bg-gray-600 text-white px-4 py-2 rounded cursor-pointer'>Apply now</button>
+            <button className='text-gray-500 border border-gray-500 rounded px-4 py-2 cursor-pointer'>Learn more</button>
         </div>
     </div>
   )

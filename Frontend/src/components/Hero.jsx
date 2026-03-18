@@ -39,7 +39,7 @@ const Hero = () => {
                             className='max-sm:text-xs p-2 rounded outline-none w-full' 
                             ref={locationRef}/>
                     </div>
-                    <button onClick={onSearch} className='bg-gray-500 px-6 py-2 rounded text-white m-1 cursor-pointer'>Search</button>
+                    <button onClick={onSearch} className='bg-gray-600 px-6 py-2 rounded text-white m-1 cursor-pointer'>Search</button>
 
                 </div>
             </div>
