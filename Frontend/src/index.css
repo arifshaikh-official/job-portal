@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* styles.css */
-.light {
+/* .light {
   background-color: #ffffff;
   color: #000000;
 }
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-}
+} */
 
 @keyframes slide {
   0% { transform: translateX(0); }
