@@ -98,7 +98,7 @@ const JobListing = () => {
             <section className='w-full lg:w-3/4 text-gray-800 max-lg:px-4 '>
                 <h3 className='text-3xl font-medium py-2' id='job-list'>Latest Jobs</h3>
                 <p className='mb-8'>Get your desired job from top top comapnies</p>
-                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 '>
                     {filteredJobs.slice((currentPage - 1) * 6, currentPage * 6).map((job, index) => (
                         <JobCard key={index} job={job} />
                     ))}
