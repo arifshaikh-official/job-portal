@@ -16,13 +16,15 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <AppContextProvider>
+       
             {/* Added the publishableKey prop here */}
             <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+             <AppContextProvider>
                 <BrowserRouter>
                     <App />
                 </BrowserRouter>
+                </AppContextProvider>
             </ClerkProvider>
-        </AppContextProvider>
+    
     </StrictMode>
 )

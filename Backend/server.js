@@ -7,6 +7,7 @@ import connectCloudinary from './config/cloudinary.js';
 import jobRoutes from './routes/jobRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import {clerkMiddleware} from '@clerk/express'
+import { clerkWebhooks } from './controllers/webHooks.js';
 
 dotenv.config()
 const app = express()
@@ -23,6 +24,7 @@ app.get("/",(req, res) => res.send("Api working"))
 app.use('/api/company',companyRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes)
+app.post('webhooks',clerkWebhooks)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
