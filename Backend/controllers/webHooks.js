@@ -1,5 +1,5 @@
 import { Webhook } from 'svix';
-import User from '../models/user.js';
+import User from '../models/User.js'
 
 export const clerkWebhooks = async (req, res) => {
     try {
@@ -18,7 +18,7 @@ export const clerkWebhooks = async (req, res) => {
                     _id: data.id,
                     email: data.email_addresses[0].email_address,
                     name: data.first_name + " " + data.last_name,
-                    image: data.image_url,
+                    image: data.image_url,  
                     resume: ' '
                 }
                 await User.create(userData)
