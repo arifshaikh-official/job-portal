@@ -20,7 +20,7 @@ import Job from '../models/Job.js'
 // }
 
 export const getUserData = async (req, res) => {
-    const userId = req.auth.userId
+    const userId = req.auth().userId
     console.log("userId:", userId)
     try {
         const user = await User.findById(userId)
@@ -65,7 +65,7 @@ export const applyForJob = async (req, res) => {
 // Get user applied applications
 export const getUserJobApplications = async (req, res) => {
     try {
-        const userId = req.auth.userId
+        const userId = req.auth().userId
         const applications = await JobApplication.find({userId}).populate('companyId', 'name email image').populate(
             'jobId','title description location category level salary'
         ).exec()
@@ -81,7 +81,7 @@ export const getUserJobApplications = async (req, res) => {
 // Update user profile (resume)
 export const updateUserResume = async (req, res) => {
     try {
-        const userId = req.auth.userId
+        const userId = req.auth().userId
         const resumeFile = req.file
         const userData = await User.findById(userId)
         if(resumeFile) {
