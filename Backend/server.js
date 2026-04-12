@@ -20,6 +20,15 @@ app.use('/webhooks', express.raw({ type: '*/*' }))
 app.use(express.json())
 app.use(clerkMiddleware())
 
+
+
+app.use((req, res, next) => {
+    console.log("CLERK_SECRET_KEY exists:", !!process.env.CLERK_SECRET_KEY)
+    console.log("auth object:", req.auth)
+    next()
+})
+
+
 app.get("/",(req, res) => res.send("Api working"))
 
 app.use('/api/company',companyRoutes);
