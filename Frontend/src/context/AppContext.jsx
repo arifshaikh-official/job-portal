@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios'
 import { toast } from "react-toastify";
-import {useAuth, useUser} from "@clerk/react";
+import {useAuth, useUser} from "@clerk/clerk-react";
 
 export const AppContext = createContext()
 
@@ -61,7 +61,7 @@ export const AppContextProvider = (props) => {
                 {headers:{Authorization:`Bearer ${token}`}}
             )
             if (data.success) {
-                setUserData(data.user)  
+                setUserData(data.user)      
             } else {
                 toast.error(data.message)
             }
@@ -69,6 +69,8 @@ export const AppContextProvider = (props) => {
             toast.error(error.message)
         }
     }
+
+
 
     useEffect(() => {
         fetchJobs()
@@ -79,7 +81,9 @@ export const AppContextProvider = (props) => {
     }, [])
 
     useEffect(() => {
+        if (companyToken) {
         fetchCompanyData()
+    }
     }, [companyToken])
 
     useEffect(()=> {
@@ -97,7 +101,8 @@ export const AppContextProvider = (props) => {
         companyData, setCompanyData,
         backendUrl,
         userData,setUserData,
-        userApplications, setUserApplications
+        userApplications, setUserApplications,
+        fetchUserData
     }
 
     return (<AppContext.Provider value={value}>
