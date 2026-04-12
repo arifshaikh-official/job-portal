@@ -16,6 +16,7 @@ await connectCloudinary()
 
 // Middlewares
 app.use(cors())
+app.use('/webhooks', express.raw({ type: '*/*' }))
 app.use(express.json())
 app.use(clerkMiddleware())
 
@@ -24,7 +25,7 @@ app.get("/",(req, res) => res.send("Api working"))
 app.use('/api/company',companyRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes)
-app.post('webhooks',clerkWebhooks)
+app.post('/webhooks',clerkWebhooks)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
