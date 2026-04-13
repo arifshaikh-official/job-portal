@@ -16,7 +16,10 @@ await connectCloudinary()
 
 // Middlewares
 app.use(cors())
-app.use('/webhooks', express.raw({ type: '*/*' }))
+
+app.use('/webhooks', express.raw({ type: '*/*' })) // 
+
+
 app.use(express.json())
 app.use(clerkMiddleware())
 

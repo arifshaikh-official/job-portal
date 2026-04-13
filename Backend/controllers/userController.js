@@ -39,7 +39,7 @@ export const getUserData = async (req, res) => {
 // Apply for a job
 export const applyForJob = async (req, res) => {
     const { jobId } = req.body
-    const userId = req.auth.userId
+    const userId = req.auth().userId
     try {
         const isAlreadyApplied = await JobApplication.find({jobId, userId})
         if(isAlreadyApplied.length > 0) {

@@ -44,7 +44,7 @@ const ApplyJob = () => {
       }
       const token = await getToken()
       const {data} = await axios.post(backendUrl+'/api/users/apply',
-        {jobId: JobData._id},
+        {jobId: jobData._id},
         {headers: {Authorization: `Bearer ${token}`}}
       )
       if (data.success) {
