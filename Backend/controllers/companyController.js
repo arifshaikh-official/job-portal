@@ -149,19 +149,41 @@ export const changeJobApplicationsStatus = async (req, res) => {
 }
 
 // Change job visibilty
+// export const changeVisibility = async (req, res) => {
+//     try {
+//         const { id } = req.body
+//         const companyId = req.company._id
+//         const job = await Job.findById(id)
+//         if (companyId.toString() === job.companyId.toString()) {
+//             job.visible = !job.visible
+//         }
+//         await job.save()
+//         res.json({ success: true, job })
+
+//     } catch (error) {
+//         res.json({ success: false, message: error.message })
+//     }
+// }
+
+
 export const changeVisibility = async (req, res) => {
     try {
         const { id } = req.body
         const companyId = req.company._id
         const job = await Job.findById(id)
-        if (companyId.toString() === job.companyId.toString()) {
-            job.visible = !job.visible
+        
+        if (!job) {
+            return res.json({ success: false, message: 'Job not found' })
         }
-        await job.save()
-        res.json({ success: true, job })
-
+        
+        if (companyId.toString() === job.companyId.toString()) {
+            // ✅ save() ki jagah findByIdAndUpdate use karo
+            await Job.findByIdAndUpdate(id, { visible: !job.visible })
+        }
+        
+        res.json({ success: true, message: 'Visibility changed' })
     } catch (error) {
+        console.log("changeVisibility error:", error.message)
         res.json({ success: false, message: error.message })
     }
 }
-
