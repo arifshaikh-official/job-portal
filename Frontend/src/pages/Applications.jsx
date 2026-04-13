@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { assets, jobsApplied } from '../assets/assets'
 import moment from 'moment'
@@ -16,7 +16,7 @@ const Applications = () => {
 
   const [isEdit, setIsEdit] = useState(false)
   const [resume, setResume] = useState(null)
-  const {backendUrl, userData, userApplications, fetchUserData} = useContext(AppContext)
+  const {backendUrl, userData, userApplications, fetchUserData, fetchUserApplications} = useContext(AppContext)
 
   const updateResume = async () => {
     try {
@@ -40,6 +40,12 @@ const Applications = () => {
     setIsEdit(false)
     setResume(null)
   }
+
+  useEffect(()=>{
+    if (user) {
+      fetchUserApplications()
+    }
+  },[user])
 
   return (
     <>
