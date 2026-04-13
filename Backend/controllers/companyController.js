@@ -130,7 +130,7 @@ export const getCompanyPostedJobs = async (req, res) => {
             return { ...job.toObject(), applicants: applicants.length }
         }))
 
-        res.json({ success: true, jobsData: jobs })
+        res.json({ success: true, jobsData: jobsData })
     } catch (error) {
         res.json({ success: false, message: error.message })
     }
