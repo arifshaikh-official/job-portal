@@ -11,6 +11,9 @@ import AddJob from "./pages/AddJob";
 import ManageJobs from "./pages/ManageJobs";
 import ViewApplications from "./pages/ViewApplications";
 import 'quill/dist/quill.snow.css'
+import About from "./pages/About";
+import Faq from "./pages/Faq";
+import CareerBlog from "./pages/CareerBlog";
 
 const App = () => {
   
@@ -22,6 +25,11 @@ const App = () => {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/about" element={<About/>}/> 
+        <Route path="/faq" element={<Faq/>}/> 
+        <Route path="/blog" element={<CareerBlog/>}/> 
+
         <Route path="/apply-job/:id" element={<ApplyJob />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/dashboard" element={<Dashboard />}>
